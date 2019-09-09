@@ -1,0 +1,23 @@
+/// Breakpoints
+
+@mixin mediaquery($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. '
+        + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin star {
+  &:before {
+    content: "";
+    padding: 15px;
+    margin-right: 10px;
+    background-image: url(#{$image_dir}/star.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
